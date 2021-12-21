@@ -1,10 +1,10 @@
 node('master_lab') 
 {
-    stage('development_test
+    stage('development_test')
     {
     git 'https://github.com/sunildevops77/maven.git'
     }
-    stage('build_test
+    stage('build_test')
     sh 'mvn package'
 }
 }
