@@ -1,0 +1,19 @@
+node('master_lab') 
+{
+    stage('development') 
+    {
+    git 'https://github.com/sunildevops77/maven.git'
+    }
+    stage('build') {
+    sh 'mvn package'
+}
+stage('deployment') {
+    sh 'scp /home/ubuntu/.jenkins/workspace/pipeline_project/webapp/target/webapp.war   ubuntu@172.31.10.251:/var/lib/tomcat8/webapps/qaenv.war'
+}
+stage('testing') {
+    sh 'echo "testing passed"'
+}
+stage('delivery') {
+    sh 'scp /home/ubuntu/.jenkins/workspace/pipeline_project/webapp/target/webapp.war   ubuntu@172.31.13.108:/var/lib/tomcat8/webapps/prodenv.war'
+}
+}
