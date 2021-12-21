@@ -4,7 +4,7 @@ node('master_lab')
     {
     git 'https://github.com/sunildevops77/maven.git'
     }
-    stage('build_test')
+    stage('build_test') {
     sh 'mvn package'
 }
 }
